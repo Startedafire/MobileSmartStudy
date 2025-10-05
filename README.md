@@ -1,16 +1,22 @@
-# smartstudy_ai
+# SmartStudy AI
 
-A new Flutter project.
+SmartStudy AI is a Flutter mobile app that helps students learn smarter by turning their notes into interactive quizzes.  
+Users can upload study files, extract text using OCR, and generate personalized quizzes powered by AI.  
+Built with **Flutter**, **Supabase**, and **AI integration** for seamless studying.
 
-## Getting Started
+## ✨ Features
+- 📂 Upload and store study notes securely
+- 🧾 Extract text from uploaded files (OCR)
+- 🤖 Generate quizzes automatically from your notes
+- 💾 View and manage all uploaded materials
+- 🪶 Clean and modern UI
 
-This project is a starting point for a Flutter application.
+## 🧰 Tech Stack
+- **Frontend:** Flutter  
+- **Backend:** Supabase  
+- **AI:** OpenAI API (planned integration)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Getting Started
+1. Clone this repository  
+   ```bash
+   git clone https://github.com/Startedafire/MobileSmartStudy.git
