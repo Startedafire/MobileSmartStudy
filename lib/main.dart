@@ -1,16 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'screens/main_tabs.dart';
+import 'screens/welcome_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/login_screen.dart';
+import 'screens/signup_screen.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
+  
+  try {
+    await dotenv.load(fileName: '.env');
+    
+    final supabaseUrl = dotenv.env['SUPABASE_URL'];
+    final supabaseAnonKey = dotenv.env['SUPABASE_ANON_KEY'];
 
-  await Supabase.initialize(
-    url: dotenv.env['SUPABASE_URL']!,
-    anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
-  );
+    if (supabaseUrl == null || supabaseAnonKey == null) {
+      throw Exception('Missing SUPABASE_URL or SUPABASE_ANON_KEY in .env');
+    }
+
+    await Supabase.initialize(
+      url: supabaseUrl,
+      anonKey: supabaseAnonKey,
+      debug: true,
+    );
+  } catch (e) {
+    debugPrint('Initialization error: $e');
+  }
 
   runApp(const MyApp());
 }
@@ -23,7 +39,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'SmartStudy AI',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MainTabsScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const WelcomeScreen(),
+        '/home': (context) => const HomeScreen(),
+        '/login': (context) => const LoginScreen(),
+        '/signup': (context) => const SignupScreen(),
+      },
     );
   }
 }
